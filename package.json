@@ -4,9 +4,9 @@
   "description": "Fullstack blog editor app",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-     "build": "cd frontend && npm run build",
-    "start": "npm run build && node backend/app.js"
+   "test": "echo \"Error: no test specified\" && exit 1",
+  "build": "cd frontend && npm run build",
+  "start": "npm run build && node backend blog/App/Run/app.js"
   },
   "repository": {
     "type": "git",
