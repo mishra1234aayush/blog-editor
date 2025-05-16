@@ -1,0 +1,22 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "Fullstack blog editor app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+     "build": "cd frontend && npm run build",
+    "start": "npm run build && node backend/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/name123-rahul/blog-editor.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/name123-rahul/blog-editor/issues"
+  },
+  "homepage": "https://github.com/name123-rahul/blog-editor#readme"
+}
