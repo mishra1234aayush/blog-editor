@@ -1,5 +1,21 @@
 const Blogmodel = require('../Schema/schema')
 
+
+exports.basicInformation = (req, res) => {
+res.send(`
+  <h1>Welcome to the Blog Editor API!</h1>
+  <p>Available endpoints:</p>
+  <ul>
+    <li>POST /blogs/save-draft - Save or update a draft</li>
+    <li>POST /blogs/publish - Publish a blog</li>
+    <li>GET /blogs - Get all blogs</li>
+    <li>GET /blogs/:id - Get a blog by ID</li>
+  </ul>
+`);
+};
+
+
+
 exports.saveOrUpdateDraft  = async(req,res)=>{
 try {
     const { _id, title, content, status } = req.body;
