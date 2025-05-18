@@ -1,10 +1,10 @@
 import React from "react";
-import BlogEditor from "./Components/BlogEditor";
+import BlogSave from "./Components/BlogSave";
 
 function App() {
   return (
     <div className="App">
-      <BlogEditor/>
+      <BlogSave/>
     </div>
   );
 }
