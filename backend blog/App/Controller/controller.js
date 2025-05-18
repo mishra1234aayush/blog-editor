@@ -1,6 +1,6 @@
 const Blogmodel = require('../Schema/schema')
 
-exports.insertBlog = async(req,res)=>{
+exports.saveOrUpdateDraft  = async(req,res)=>{
 try {
     const { _id, title, content, status } = req.body;
     console.log(req.body);
@@ -13,15 +13,37 @@ try {
         { title, content, status, updatedAt: new Date() },
         { new: true }
       );
-    } else {
-      blog = new Blogmodel({ title, content, status });
-      await blog.save();
-    }
+    } 
 
+    else{
+       blog = await Blogmodel.create({ title, content, status, createdAt : new Date()});
+        return res.json({ message: "Draft saved", blog });
+    }
     res.status(200).json(blog);
   } catch (err) {
-    res.status(500).json({ error: "Error saving blog" });
+    res.status(500).json({ error: "Error updating blog" });
   }
+}
+
+
+
+exports.publishBlog  = async(req,res) => {
+
+ const { title, content, status } = req.body;
+   
+  try{  
+       const blog = await Blogmodel.create({ title, content, status,createdAt : new Date()});
+       console.log(blog);
+       
+    return res.json({ message: "Blog published", blog });
+     
+   }
+
+   catch(err){
+    res.status(500).json({ error: "Error saving blog" });
+   }
+
+     
 }
 
 
@@ -37,6 +59,19 @@ exports.getBlog = async(req,res) =>{
 
   } catch (err) {
     res.status(500).json({ error: "Error fetching blog" });
+  }
+}
+
+
+
+exports.getAllBlog = async(req,res) =>{
+ try {
+    const blog = await Blogmodel.find();
+
+    res.status(200).json(blog);
+
+  } catch (err) {
+    res.status(500).json({ error: "Server error" });
   }
 }
 
